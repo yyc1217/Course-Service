@@ -1,2 +1,2 @@
-include 'class-data'
-include 'class-server'
+include 'course-data'
+include 'course-server'

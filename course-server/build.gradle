@@ -23,7 +23,7 @@ repositories{
 
 dependencies{
 
-    compile project(':class-data')
+    compile project(':course-data')
     compile name: 'oauth-resource-0.1.5-SNAPSHOT'
 
     compile 'org.springframework:spring-webmvc:4.1.1.RELEASE',
@@ -46,7 +46,7 @@ dependencies{
 }
 
 war {
-    archiveName = 'class-server.war'
+    archiveName = 'course-server.war'
 }
 
 gretty {

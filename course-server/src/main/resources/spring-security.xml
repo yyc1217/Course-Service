@@ -8,8 +8,10 @@
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-    <security:http disable-url-rewriting="true" use-expressions="true" entry-point-ref="apiEntry">
+    <security:global-method-security pre-post-annotations="enabled"/>
 
+    <security:http pattern="/api/**" create-session="never" use-expressions="true" entry-point-ref="apiEntry">
+        <!--<security:custom-filter ref="tokenCheckFilter" after="FORM_LOGIN_FILTER"/>-->
     </security:http>
 
     <security:authentication-manager alias="authenticationManager"/>

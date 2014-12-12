@@ -1,0 +1,15 @@
+
+description = 'android client for course server'
+
+dependencies {
+    compile project(':course-data')
+    compile project(':course-client-config')
+}
+
+
+
+
+
+
+
+

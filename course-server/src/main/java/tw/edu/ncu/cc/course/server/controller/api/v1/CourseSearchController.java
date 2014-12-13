@@ -39,7 +39,7 @@ public class CourseSearchController {
         course.setFullHalf( Course.FullHalf.half );
         course.setMaxStudents( 0 );
 
-        return new ResponseEntity<>( course, HttpStatus.OK );
+        return new ResponseEntity<>( new Course[]{ course }, HttpStatus.OK );
     }
 
     @RequestMapping( value = "departments/{departmentId}", method = RequestMethod.GET )
@@ -65,7 +65,7 @@ public class CourseSearchController {
         course.setFullHalf( Course.FullHalf.half );
         course.setMaxStudents( 0 );
 
-        return new ResponseEntity<>( course, HttpStatus.OK );
+        return new ResponseEntity<>( new Course[]{ course }, HttpStatus.OK );
     }
 
     @RequestMapping( value = "openfor/{openforId}", method = RequestMethod.GET )
@@ -91,7 +91,7 @@ public class CourseSearchController {
         course.setFullHalf( Course.FullHalf.half );
         course.setMaxStudents( 0 );
 
-        return new ResponseEntity<>( course, HttpStatus.OK );
+        return new ResponseEntity<>( new Course[]{ course }, HttpStatus.OK );
     }
 
     @RequestMapping( value = "summer/{stage}", method = RequestMethod.GET )
@@ -117,7 +117,7 @@ public class CourseSearchController {
         course.setFullHalf( Course.FullHalf.half );
         course.setMaxStudents( 0 );
 
-        return new ResponseEntity<>( course, HttpStatus.OK );
+        return new ResponseEntity<>( new Course[]{ course }, HttpStatus.OK );
     }
 
 }

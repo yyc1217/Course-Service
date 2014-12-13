@@ -34,7 +34,7 @@ public class StudentCourseController {
         course.setFullHalf( Course.FullHalf.half );
         course.setMaxStudents( 0 );
 
-        return new ResponseEntity<>( course, HttpStatus.OK );
+        return new ResponseEntity<>( new Course[]{ course }, HttpStatus.OK );
     }
 
     @RequestMapping( value = "{studentID}/tracking", method = RequestMethod.GET )
@@ -59,7 +59,7 @@ public class StudentCourseController {
         course.setFullHalf( Course.FullHalf.half );
         course.setMaxStudents( 0 );
 
-        return new ResponseEntity<>( course, HttpStatus.OK );
+        return new ResponseEntity<>( new Course[]{ course }, HttpStatus.OK );
     }
 
 }

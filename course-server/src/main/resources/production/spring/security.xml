@@ -9,8 +9,7 @@
             <bean class="tw.edu.ncu.cc.oauth.resource.service.TokenConfirmServiceImpl">
                 <property name="config">
                     <bean class="tw.edu.ncu.cc.oauth.resource.config.RemoteConfig">
-                        <property name="addrPrefix" value="${token_remote_prefix}"/>
-                        <property name="addrSuffix" value="${token_remote_postfix}"/>
+                        <property name="addrPrefix" value="${remote_token_service}"/>
                     </bean>
                 </property>
             </bean>

@@ -10,8 +10,7 @@
             <bean class="tw.edu.ncu.cc.oauth.resource.service.TokenConfirmServiceImpl">
                 <property name="config">
                     <bean class="tw.edu.ncu.cc.oauth.resource.config.RemoteConfig">
-                        <property name="addrPrefix" value="https://localhost:5278/token/"/>
-                        <property name="addrSuffix" value="/scope"/>
+                        <property name="addrPrefix" value="https://localhost:8899/token/string/"/>
                     </bean>
                 </property>
             </bean>

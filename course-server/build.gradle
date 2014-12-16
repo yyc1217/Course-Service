@@ -25,6 +25,7 @@ dependencies{
 
     compile project(':course-data')
     compile name: 'oauth-resource-0.1.5-SNAPSHOT'
+    compile name: 'oauth-data-0.1.5-SNAPSHOT'
 
     compile 'org.springframework:spring-webmvc:4.1.1.RELEASE',
             'org.springframework:spring-test:4.1.1.RELEASE',
@@ -41,7 +42,8 @@ dependencies{
     runtime 'org.slf4j:slf4j-log4j12:1.7.7'
 
     testCompile 'org.spockframework:spock-spring:1.0-groovy-2.3-SNAPSHOT',
-                'com.jayway.jsonpath:json-path-assert:0.9.1'
+                'com.jayway.jsonpath:json-path-assert:0.9.1',
+                'org.mock-server:mockserver-netty:3.6.2'
 
 }
 

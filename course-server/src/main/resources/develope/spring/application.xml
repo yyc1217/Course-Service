@@ -7,4 +7,8 @@
 
     <import resource="security.xml"/>
 
+    <bean class="tw.edu.ncu.cc.course.server.service.RemoteHttpServiceImpl">
+        <property name="remotePrefix" value="https://localhost:8899/"/>
+    </bean>
+
 </beans>

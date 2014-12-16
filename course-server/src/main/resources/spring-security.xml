@@ -11,7 +11,7 @@
     <security:global-method-security pre-post-annotations="enabled"/>
 
     <security:http pattern="/api/**" create-session="never" use-expressions="true" entry-point-ref="apiEntry">
-        <!--<security:custom-filter ref="tokenCheckFilter" after="FORM_LOGIN_FILTER"/>-->
+        <security:custom-filter ref="tokenCheckFilter" after="LAST"/>
     </security:http>
 
     <security:authentication-manager alias="authenticationManager"/>

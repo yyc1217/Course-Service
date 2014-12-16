@@ -9,12 +9,15 @@
     <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:production/security.properties</value>
+                <value>classpath:production/remote.properties</value>
             </list>
         </property>
     </bean>
 
-    <import resource="cache.xml"/>
     <import resource="security.xml"/>
+
+    <bean class="tw.edu.ncu.cc.course.server.service.RemoteHttpServiceImpl">
+        <property name="remotePrefix" value="${remote_course_service}"/>
+    </bean>
 
 </beans>

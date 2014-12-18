@@ -3,10 +3,12 @@ description = 'android client for course server'
 
 dependencies {
     compile project(':course-data')
-    compile project(':course-client-config')
+    compile project(':course-client-tool')
 
     compile 'com.wu-man:android-oauth-client:0.0.3',
-            'com.google.android:android:4.1.1.4'
+            'com.google.android:android:4.1.1.4',
+            'com.mcxiaoke.volley:library:1.0.6',
+            'com.google.code.gson:gson:2.2.4'
 }
 
 

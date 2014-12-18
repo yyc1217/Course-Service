@@ -41,16 +41,16 @@ public class OAuthHandler {
 
     private AuthorizationFlow buildAuthorizationFlow( CredentialStore credentialStore, String id, String secret ) {
         return new AuthorizationFlow
-                .Builder( null, null, null, null, null, null, null )
-                .setMethod( BearerToken.authorizationHeaderAccessMethod() )
-                .setTransport( AndroidHttp.newCompatibleTransport() )
-                .setJsonFactory( new JacksonFactory() )
+                .Builder(
+                BearerToken.authorizationHeaderAccessMethod(),
+                AndroidHttp.newCompatibleTransport(),
+                new JacksonFactory(),
+                new GenericUrl( "https://140.115.3.97/oauth/oauth/token" ),
+                new ClientParametersAuthentication( id, secret ),
+                id,
+                "https://140.115.3.97/oauth/oauth/authorize" )
                 .setCredentialStore( credentialStore )
                 .setScopes( Arrays.asList( "CLASS_READ" ) )
-                .setAuthorizationServerEncodedUrl( "https://140.115.3.97/oauth/oauth/authorize" )
-                .setTokenServerUrl( new GenericUrl( "https://140.115.3.97/oauth/oauth/token" ) )
-                .setClientAuthentication( new ClientParametersAuthentication( id, secret ) )
-                .setClientId( id )
                 .build();
     }
 

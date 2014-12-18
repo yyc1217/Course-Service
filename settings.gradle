@@ -1,4 +1,4 @@
 include 'course-data'
 include 'course-server'
-include 'course-client-config'
+include 'course-client-tool'
 include 'course-client-android'

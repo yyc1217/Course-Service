@@ -93,7 +93,7 @@ class StudentCourseControllerTest extends IntegrationSpecification {
         serverResource.mockServer().when(
                 HttpRequest.request()
                         .withMethod( "GET" )
-                        .withPath( "/101502549/selected" )
+                        .withPath( "/student/101502549/selected" )
         ).respond(
                 HttpResponse.response()
                         .withStatusCode( 200 )
@@ -103,7 +103,7 @@ class StudentCourseControllerTest extends IntegrationSpecification {
         serverResource.mockServer().when(
                 HttpRequest.request()
                         .withMethod( "GET" )
-                        .withPath( "/101502549/tracking" )
+                        .withPath( "/student/101502549/tracking" )
         ).respond(
                 HttpResponse.response()
                         .withStatusCode( 200 )

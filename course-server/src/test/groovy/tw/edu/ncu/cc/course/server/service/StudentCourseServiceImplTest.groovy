@@ -49,7 +49,7 @@ class StudentCourseServiceImplTest extends SpringSpecification {
         serverResource.mockServer().when(
                 HttpRequest.request()
                         .withMethod( "GET" )
-                        .withPath( "/101502549/selected" )
+                        .withPath( "/student/101502549/selected" )
         ).respond(
                 HttpResponse.response()
                         .withStatusCode( 200 )
@@ -59,7 +59,7 @@ class StudentCourseServiceImplTest extends SpringSpecification {
         serverResource.mockServer().when(
                 HttpRequest.request()
                         .withMethod( "GET" )
-                        .withPath( "/101502550/tracking" )
+                        .withPath( "/student/101502550/tracking" )
         ).respond(
                 HttpResponse.response()
                         .withStatusCode( 200 )

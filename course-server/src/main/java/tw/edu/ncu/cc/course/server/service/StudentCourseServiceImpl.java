@@ -16,12 +16,12 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 
     @Override
     public Course[] readSelectedCourses( String studentID ) {
-        return httpService.getObject( Course[].class, "{studentID}/selected", studentID );
+        return httpService.getObject( Course[].class, "student/{studentID}/selected", studentID );
     }
 
     @Override
     public Course[] readTrackedCourses( String studentID ) {
-        return httpService.getObject( Course[].class, "{studentID}/tracking", studentID );
+        return httpService.getObject( Course[].class, "student/{studentID}/tracking", studentID );
     }
 
 }

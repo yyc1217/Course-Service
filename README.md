@@ -2,5 +2,7 @@
 Course Information Service for NCU
 
 ### Module
+- course-client-tool : course client tools
+- course-client-android : course client for android
 - course-data : course service data
 - course-server : course service provider

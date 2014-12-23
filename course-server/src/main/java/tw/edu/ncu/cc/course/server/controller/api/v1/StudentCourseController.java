@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import tw.edu.ncu.cc.course.data.Course;
+import tw.edu.ncu.cc.course.data.v1.Course;
 import tw.edu.ncu.cc.course.server.exception.handler.APIExceptionHandler;
 import tw.edu.ncu.cc.course.server.service.StudentCourseService;
 

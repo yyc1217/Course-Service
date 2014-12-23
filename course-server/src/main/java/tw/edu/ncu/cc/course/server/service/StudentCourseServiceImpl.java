@@ -2,7 +2,7 @@ package tw.edu.ncu.cc.course.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tw.edu.ncu.cc.course.data.Course;
+import tw.edu.ncu.cc.course.data.v1.Course;
 
 @Service
 public class StudentCourseServiceImpl implements StudentCourseService {

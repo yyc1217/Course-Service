@@ -7,7 +7,7 @@ import org.mockserver.model.HttpResponse
 import resource.ServerResource
 import specification.SpringSpecification
 import spock.lang.Shared
-import tw.edu.ncu.cc.course.data.Unit
+import tw.edu.ncu.cc.course.data.v1.Unit
 
 
 class RemoteHttpServiceImplTest extends SpringSpecification {

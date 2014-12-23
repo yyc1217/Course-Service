@@ -1,4 +1,4 @@
-package tw.edu.ncu.cc.course.data;
+package tw.edu.ncu.cc.course.data.v1;
 
 public class Unit {
 

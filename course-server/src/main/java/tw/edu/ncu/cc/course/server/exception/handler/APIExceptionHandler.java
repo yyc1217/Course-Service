@@ -8,6 +8,8 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpStatusCodeException;
+import tw.edu.ncu.cc.course.data.v1.message.Error;
+import tw.edu.ncu.cc.course.data.v1.message.ErrorCode;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,10 +27,21 @@ public class APIExceptionHandler {
     }
 
     @ExceptionHandler( { HttpStatusCodeException.class } )
-    public ResponseEntity invalidRequestBody( HttpStatusCodeException e ) {
-        return new ResponseEntity<>(
-            e.getMessage(), e.getStatusCode()
-        );
+    public ResponseEntity remoteResponseError( HttpStatusCodeException e ) {
+        switch ( e.getStatusCode() ) {
+            case NOT_FOUND:
+                return new ResponseEntity<>(
+                        new Error(
+                            ErrorCode.NOT_EXIST, "required resource not exist"
+                        ), HttpStatus.NOT_FOUND
+                );
+            default:
+                return new ResponseEntity<>(
+                        new Error(
+                                ErrorCode.RAW, e.getMessage()
+                        ), e.getStatusCode()
+                );
+        }
     }
 
     @ExceptionHandler( Exception.class )

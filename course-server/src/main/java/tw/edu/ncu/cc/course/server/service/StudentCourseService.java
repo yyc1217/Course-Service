@@ -1,6 +1,6 @@
 package tw.edu.ncu.cc.course.server.service;
 
-import tw.edu.ncu.cc.course.data.Course;
+import tw.edu.ncu.cc.course.data.v1.Course;
 
 public interface StudentCourseService {
 

@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import tw.edu.ncu.cc.course.client.tool.config.CourseConfig;
 import tw.edu.ncu.cc.course.client.tool.response.ResponseListener;
-import tw.edu.ncu.cc.course.data.Course;
+import tw.edu.ncu.cc.course.data.v1.Course;
 
 import java.io.IOException;
 import java.util.HashMap;

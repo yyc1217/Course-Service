@@ -31,7 +31,7 @@ public class APIExceptionHandler {
         );
     }
 
-    @ExceptionHandler
+    @ExceptionHandler( Exception.class )
     public ResponseEntity exceptionHandler( Exception exception ) {
         logger.error( "SEVERE INTERNAL ERROR", exception );
         return new ResponseEntity<>(

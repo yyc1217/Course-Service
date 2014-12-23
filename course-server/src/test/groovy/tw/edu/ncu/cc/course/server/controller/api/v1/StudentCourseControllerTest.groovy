@@ -89,6 +89,14 @@ class StudentCourseControllerTest extends IntegrationSpecification {
         ).respond(
                 HttpResponse.response()
                         .withStatusCode( 404 )
+                        .withBody(
+                            '''
+                            {
+                                "error" : 1,
+                                "error_description" : "resourse not exist"
+                            }
+                            '''
+                )
         )
         serverResource.mockServer().when(
                 HttpRequest.request()
@@ -134,10 +142,17 @@ class StudentCourseControllerTest extends IntegrationSpecification {
             response[0].serialNo == 12034
     }
 
-    def "it will return 403 when access token is invalid"() {
+    def "it will return 403 when access token has insufficient scope"() {
         expect:
             server()
                     .perform( get( "/api/v1/student/tracking" ).header( "Authorization", "Bearer TOKEN2" ) )
+                    .andExpect( status().is( 403 ) )
+    }
+
+    def "it will return 403 when access token is not exist"() {
+        expect:
+            server()
+                    .perform( get( "/api/v1/student/tracking" ).header( "Authorization", "Bearer TOKEN3" ) )
                     .andExpect( status().is( 403 ) )
     }
 

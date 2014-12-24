@@ -4,15 +4,39 @@ package tw.edu.ncu.cc.course.data.v1;
 public class Course {
 
     public static enum FullHalf {
-        full, half
+        full( "全" ), half( "半" );
+        private String s;
+        FullHalf( String s ) {
+            this.s = s;
+        }
+        @Override
+        public String toString() {
+            return s;
+        }
     }
 
     public static enum RequireType {
-        required, elective
+        required( "必修" ), elective( "選修" );
+        private String s;
+        RequireType( String s ) {
+            this.s = s;
+        }
+        @Override
+        public String toString() {
+            return s;
+        }
     }
 
     public static enum PasswordCard {
-        no, optional, all
+        no( "不使用" ), optional( "部分使用" ), all( "全部使用" );
+        private String s;
+        PasswordCard( String s ) {
+            this.s = s;
+        }
+        @Override
+        public String toString() {
+            return s;
+        }
     }
 
     private String no;

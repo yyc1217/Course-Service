@@ -44,12 +44,12 @@ public class APIExceptionHandler {
         }
     }
 
-    @ExceptionHandler( Exception.class )
-    public ResponseEntity exceptionHandler( Exception exception ) {
-        logger.error( "SEVERE INTERNAL ERROR", exception );
-        return new ResponseEntity<>(
-                exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR
-        );
-    }
+//    @ExceptionHandler( Exception.class )
+//    public ResponseEntity exceptionHandler( Exception exception ) {
+//        logger.error( "SEVERE INTERNAL ERROR", exception );
+//        return new ResponseEntity<>(
+//                exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR
+//        );
+//    }
 
 }

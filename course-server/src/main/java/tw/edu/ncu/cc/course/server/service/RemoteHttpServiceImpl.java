@@ -1,5 +1,7 @@
 package tw.edu.ncu.cc.course.server.service;
 
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -7,6 +9,7 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import java.nio.charset.Charset;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
@@ -19,6 +22,17 @@ public class RemoteHttpServiceImpl implements RemoteHttpService {
     public RemoteHttpServiceImpl() {
         turnOffSSLChecking();
         restTemplate = new RestTemplate();
+        rebuildRestTemplateWithUnicode( restTemplate );
+    }
+
+    private void rebuildRestTemplateWithUnicode( RestTemplate restTemplate ) {
+        for ( HttpMessageConverter converter : restTemplate.getMessageConverters() ) {
+            if( converter instanceof StringHttpMessageConverter ) {
+                restTemplate.getMessageConverters().remove( converter );
+                break;
+            }
+        }
+        restTemplate.getMessageConverters().add( new StringHttpMessageConverter( Charset.forName( "UTF-8" ) ) );
     }
 
     public void setRemotePrefix( String remotePrefix ) {

@@ -1,16 +1,13 @@
 package tw.edu.ncu.cc.course.server.service;
 
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import tw.edu.ncu.cc.course.server.helper.RestTemplateHelper;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import java.lang.reflect.Field;
-import java.nio.charset.Charset;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
@@ -27,20 +24,7 @@ public class RemoteHttpServiceImpl implements RemoteHttpService {
     }
 
     private void rebuildRestTemplateWithUnicode( RestTemplate restTemplate ) {
-        try {
-            for ( HttpMessageConverter converter : restTemplate.getMessageConverters() ) {
-                if( converter instanceof StringHttpMessageConverter ) {
-
-                    StringHttpMessageConverter stringConverter = ( StringHttpMessageConverter ) converter;
-                    Field field = stringConverter.getClass().getDeclaredField( "defaultCharset" );
-                    field.setAccessible( true );
-                    field.set( stringConverter, Charset.forName( "UTF-8" ) );
-                    break;
-                }
-            }
-        } catch ( NoSuchFieldException | IllegalAccessException e ) {
-            throw new RuntimeException( e );
-        }
+        restTemplate.setMessageConverters( RestTemplateHelper.createConverters() );
     }
 
     public void setRemotePrefix( String remotePrefix ) {

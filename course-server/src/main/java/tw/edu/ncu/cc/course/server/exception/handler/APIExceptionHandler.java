@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import tw.edu.ncu.cc.course.data.v1.message.Error;
 import tw.edu.ncu.cc.course.data.v1.message.ErrorCode;
@@ -42,6 +43,15 @@ public class APIExceptionHandler {
                         ), e.getStatusCode()
                 );
         }
+    }
+
+    @ExceptionHandler( HttpServerErrorException.class )
+    public ResponseEntity remoteServerError( HttpServerErrorException e ) {
+        return new ResponseEntity<>(
+                new Error(
+                        ErrorCode.RAW, e.getMessage() + "->" + e.getResponseBodyAsString()
+                ), e.getStatusCode()
+        );
     }
 
     @ExceptionHandler( Exception.class )

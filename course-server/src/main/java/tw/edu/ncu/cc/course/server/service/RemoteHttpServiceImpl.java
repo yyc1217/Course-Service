@@ -9,6 +9,7 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -26,13 +27,20 @@ public class RemoteHttpServiceImpl implements RemoteHttpService {
     }
 
     private void rebuildRestTemplateWithUnicode( RestTemplate restTemplate ) {
-        for ( HttpMessageConverter converter : restTemplate.getMessageConverters() ) {
-            if( converter instanceof StringHttpMessageConverter ) {
-                restTemplate.getMessageConverters().remove( converter );
-                break;
+        try {
+            for ( HttpMessageConverter converter : restTemplate.getMessageConverters() ) {
+                if( converter instanceof StringHttpMessageConverter ) {
+
+                    StringHttpMessageConverter stringConverter = ( StringHttpMessageConverter ) converter;
+                    Field field = stringConverter.getClass().getDeclaredField( "defaultCharset" );
+                    field.setAccessible( true );
+                    field.set( stringConverter, Charset.forName( "UTF-8" ) );
+                    break;
+                }
             }
+        } catch ( NoSuchFieldException | IllegalAccessException e ) {
+            throw new RuntimeException( e );
         }
-        restTemplate.getMessageConverters().add( new StringHttpMessageConverter( Charset.forName( "UTF-8" ) ) );
     }
 
     public void setRemotePrefix( String remotePrefix ) {
